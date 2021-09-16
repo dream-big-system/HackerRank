@@ -1,0 +1,26 @@
+   public static List<Integer> rotLeft(List<Integer> a, int d) {
+    // Write your code here
+        
+        //we are creating a new list and putting our integers into it
+        List<Integer> b = new ArrayList<Integer>();
+        
+        //how many rotations you need
+        int rotations = d % a.size();
+        
+        //the first number in the list
+        int startingIndex = rotations;
+        
+        b.add(a.get(startingIndex));
+        
+        //get starting index all the way to the end of the list
+        for(int i = startingIndex + 1; i < a.size(); i++)
+            b.add(a.get(i));
+        
+        //get the rest of the indexs     
+        for(int i = 0; i < startingIndex; i++)
+            b.add(a.get(i));
+        
+        return b;  
+    }
+
+}
