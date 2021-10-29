@@ -1,10 +1,15 @@
 static int minimumSwaps(int[] arr) {
         int temp = 0, swaps = 0, j = 0;
+        
+        //this loop is used for finding our targets
         for(int i = 1; i < arr.length + 1; i++){
             j = i - 1; 
+            //this loop is used for iterating through the array
             while(j < arr.length){
+                //if our target is in the correct spot we end our loop and loop for the next target
                 if(arr[j] == i && j+1 == i)
                     break;
+                //when we find our target and it is not in the correct location we swap      
                 else if(arr[j] == i){
                     temp = arr[j];
                     arr[j] = arr[i-1];
