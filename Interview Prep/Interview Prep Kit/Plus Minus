@@ -1,0 +1,23 @@
+    public static void plusMinus(List<Integer> arr) {
+    // Write your code here
+    
+        //numberTypes[0] = postive, [1] = negative, [2] = zero
+        int[] numberTypes = new int[3];
+        int n = arr.size(), number = 0;
+        for(int i = 0; i < arr.size(); i++){
+            number = arr.get(i);
+            if(number > 0){
+                numberTypes[0]++;
+            }
+            else if(number < 0){
+                numberTypes[1]++;
+            }
+            else{
+                numberTypes[2]++;
+            }
+        }
+        System.out.println((double)numberTypes[0]/n);   
+        System.out.println((double)numberTypes[1]/n);   
+        System.out.println((double)numberTypes[2]/n);   
+
+    }
