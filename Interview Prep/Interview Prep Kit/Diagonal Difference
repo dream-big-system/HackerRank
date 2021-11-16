@@ -1,0 +1,23 @@
+public static int diagonalDifference(List<List<Integer>> arr) {
+    // Write your code here
+        int value = 0, index = 0, leftIndex = 0, rightIndex = arr.size()-1, leftDiagonal = 0, 
+        rightDiagonal = 0;
+        
+        for(List innerlist : arr){
+            for(Object i : innerlist){
+                if(index == leftIndex){
+                    leftDiagonal += (Integer) i;
+                }
+                if(index == rightIndex){
+                    rightDiagonal += (Integer) i;
+                }
+                index++;
+            }
+            leftIndex++;     
+            rightIndex--;
+            index = 0;
+        }
+        
+        
+        return Math.abs(leftDiagonal - rightDiagonal);
+    }
