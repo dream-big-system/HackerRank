@@ -1,0 +1,18 @@
+    public static String timeConversion(String s) {
+    // Write your code here
+        String[] split = s.split(":");
+      
+        int hour = Integer.parseInt(split[0]);
+        if(split[2].contains("P")){
+            if(hour != 12){
+                hour += 12;
+                split[0] = "" + hour;
+            }
+        }
+        else if(split[2].contains("A") && hour == 12)
+            split[0] = "00";
+        
+        return split[0] + ":" + split[1] + ":" + split[2].substring(0,2);     
+    }
+
+}
