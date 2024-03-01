@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner input = new Scanner(System.in);
+                
+        int length = input.nextInt();
+        int[] array = new int[length];
+        
+        int counter = 0;
+        for(int i = 0; i < length; i++){
+            array[i] = input.nextInt();
+            if(array[i] < 0)
+                counter++;
+        }
+       // System.out.println(counter);
+        if(counter == 0)
+            System.out.println(counter);
+        else{
+            int fast = 0, slow = 0, sum = 0;
+            
+            for(slow = 0; slow < length; slow++){
+                sum = array[slow];
+                for(fast = slow + 1; fast < length; fast++){
+                    sum += array[fast];
+                    if(sum < 0){
+                       // System.out.println(slow + " " + fast + " " + sum + " " + counter);
+                        counter++;
+                    }    
+                }
+            } 
+            System.out.println(counter);
+        }
+        input.close();
+    }
+}
