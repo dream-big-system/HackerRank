@@ -1,0 +1,105 @@
+import java.util.*;
+
+class Student{
+	private int id;
+	private String fname;
+	private double cgpa;
+	public Student(int id, String fname, double cgpa) {
+		super();
+		this.id = id;
+		this.fname = fname;
+		this.cgpa = cgpa;
+	}
+	public int getId() {
+		return id;
+	}
+	public String getFname() {
+		return fname;
+	}
+	public double getCgpa() {
+		return cgpa;
+	}
+}
+
+//Complete the code
+public class Solution
+{
+	public static void main(String[] args){
+		Scanner in = new Scanner(System.in);
+		int testCases = Integer.parseInt(in.nextLine());
+		int start = 0;
+        
+		List<Student> studentList = new ArrayList<Student>();
+        
+		while(testCases>0){
+			int id = in.nextInt();
+			String fname = in.next();
+			double cgpa = in.nextDouble();
+			
+			Student st = new Student(id, fname, cgpa);
+			studentList.add(st);
+            if(start > 0){
+                int iterator1 = 0, iterator2 = 1;
+                while(true){
+                    if(studentList.get(iterator1).getCgpa() == studentList.get(iterator2).getCgpa()){
+                        //name of students are the same so sort by id
+                        if(studentList.get(iterator1).getFname().equals(studentList.get(iterator2).getFname())){
+                            if(studentList.get(iterator1).getId() > studentList.get(iterator2).getId()){
+                                Student temp = studentList.get(iterator1);
+                                studentList.remove(iterator1);
+                                studentList.add(iterator2, temp);
+                                iterator1 = 0;
+                                iterator2 = 1;
+                            }
+                            else{
+                                iterator1++;
+                                iterator2++;
+                                if(iterator2 >= studentList.size())
+                                    break;
+                            }
+                        }
+                        //name of students are not the same so sort by name
+                        else{
+                            if(studentList.get(iterator1).getFname().compareTo(studentList.get(iterator2).getFname()) > 0){
+                                Student temp = studentList.get(iterator1);
+                                studentList.remove(iterator1);
+                                studentList.add(iterator2, temp);
+                                iterator1 = 0;
+                                iterator2 = 1;
+                            }
+                            else{
+                                iterator1++;
+                                iterator2++;
+                                if(iterator2 >= studentList.size())
+                                    break;
+                            }
+                        }
+                    }
+                    else if(studentList.get(iterator1).getCgpa() < studentList.get(iterator2).getCgpa()){                    
+                        Student temp = studentList.get(iterator1);
+                        studentList.remove(iterator1);
+                        studentList.add(iterator2, temp);
+                        iterator1 = 0;
+                        iterator2 = 1;
+                    }
+                    else{
+                        iterator1++;
+                        iterator2++;
+                        if(iterator2 >= studentList.size())
+                            break;
+                    }
+                }
+            }
+                
+            start++;
+			testCases--;
+		}
+      
+      	for(Student st: studentList){
+			System.out.println(st.getFname());
+		}
+	}
+}
+
+
+
