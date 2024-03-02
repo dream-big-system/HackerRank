@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scanner = new Scanner(System.in);
+        int length_rows = scanner.nextInt();
+        
+        ArrayList<ArrayList<Integer>> main_list = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> inner_list = new ArrayList<Integer>();
+        
+        int num_elements = 0, element = 0;
+        for(int i = 0; i < length_rows; i++){
+            num_elements = scanner.nextInt();
+            for(int j = 0; j < num_elements; j++){
+                element = scanner.nextInt();
+                inner_list.add(element);
+            }
+            main_list.add(inner_list);
+            inner_list = new ArrayList<Integer>();
+        }
+        int num_queries = 0, row = 0, index = 0, length_of_row = 0; 
+        num_queries = scanner.nextInt();
+        
+        for(int i = 0; i < num_queries; i++){
+            row = scanner.nextInt();
+            index = scanner.nextInt();
+            if(row - 1 >= main_list.size())
+                System.out.println("ERROR!");
+            else{
+                length_of_row = main_list.get(row-1).size();
+                if(index -1 >= length_of_row)
+                    System.out.println("ERROR!");
+                else
+                    System.out.println(main_list.get(row-1).get(index-1));        
+            }
+        }
+        scanner.close();
+    }
+}
