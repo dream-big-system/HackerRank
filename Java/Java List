@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+
+        // Importing the Scanner class from java.util package to read input from the console
+        Scanner scanner = new Scanner(System.in);
+        
+        // Reading the length of the LinkedList from the console input
+        int length = scanner.nextInt();
+        
+        // Creating a new LinkedList object to store integers
+        LinkedList<Integer> llist = new LinkedList<Integer>();
+        
+        // Reading 'length' number of integers from the console and adding them to the LinkedList
+        for(int i = 0; i < length; i++){
+            llist.add(scanner.nextInt());
+        }
+        
+        // Reading the number of queries from the console input, along with query details
+        int number_of_queries = scanner.nextInt(), index = 0, number = 0;
+        
+        // Processing each query
+        for(int i = 0; i < number_of_queries; i++){
+            
+            // Reading the command for each query from the console
+            String command = scanner.next();
+            
+            // Checking if the command is to insert an element into the LinkedList
+            if(command.equals("Insert")){
+                // Reading the index and the number to be inserted from the console
+                index = scanner.nextInt();
+                number = scanner.nextInt();
+                // Inserting the number at the specified index in the LinkedList
+                llist.add(index, number);                    
+            }
+            // Checking if the command is to delete an element from the LinkedList
+            if(command.equals("Delete")){
+                // Reading the index of the element to be deleted from the console
+                index = scanner.nextInt();
+                // Removing the element at the specified index from the LinkedList
+                llist.remove(index);
+            }
+        }
+        // Printing the elements of the LinkedList after all the queries have been processed
+        for(int i = 0; i < llist.size(); i++){
+            System.out.print(llist.get(i) + " ");
+        }
+        scanner.close();
+    }
+}
