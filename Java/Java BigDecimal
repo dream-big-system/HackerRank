@@ -1,0 +1,36 @@
+// Check if the size of the array 's' is not equal to 1
+        if(n != 1){   
+            // Initialize two BigDecimal objects to store numbers during comparison
+            BigDecimal number1 = new BigDecimal("0"); 
+            BigDecimal number2 = new BigDecimal("0"); 
+            
+            // Initialize iterators for array traversal
+            int iterator1 = 0, iterator2 = 1;
+            
+            // Continue looping indefinitely
+            while(true){
+                // Convert array elements to BigDecimal for comparison
+                number1 = new BigDecimal(s[iterator1]);
+                number2 = new BigDecimal(s[iterator2]);
+                
+                // Compare two BigDecimal numbers
+                if(number1.compareTo(number2) == -1){
+                    // Swap elements if they are out of order
+                    String temp = s[iterator1];
+                    s[iterator1] = s[iterator2];
+                    s[iterator2] = temp;
+                    // Reset iterators to check the array from the beginning
+                    iterator1 = 0;
+                    iterator2 = 1;
+                }
+                else{
+                    // Move iterators to the next pair of elements
+                    iterator1++;
+                    iterator2++;
+                    // Break out of the loop if iterators reach the end of the array
+                    if(iterator2 >= n || iterator1 >= n){
+                        break;
+                    }
+                }
+            }
+        }
